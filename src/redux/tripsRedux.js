@@ -12,16 +12,27 @@ export const getFilteredTrips = ({trips, filters}) => {
   }
 
   // TODO - filter by duration
-  if(filters.duration){
-    const pattern = new RegExp(filters.duration, 'i');
-    output = output.filter(trip => pattern.test(trip.duration));
-  }
+  if (filters.duration){
+    const minDuraton = filters.duration.from;
+    const maxDuration = filters.duration.to;
 
-  // TODO - filter by tags
-  if(filters.tags){
-    const pattern = new RegExp(filters.tags, 'i');
-    output = output.filter(trip => pattern.test(trip.tags));
+    output = output.filter(trip =>
+      (trip.days >= minDuraton &&
+       trip.days <= maxDuration));
   }
+  // TODO - filter by tags
+  if(filters.tags.length > 0){
+    for(let tag in filters.tags){
+      output = output.filter(trip => trip.tags.indexOf(tag) >= -1);
+    }
+  }
+  //for(let tag of filters.tags) {
+  //output = output.filter(trip => trip.tags.indexOf(tag) >= -1);
+  //}
+  //  const pattern = new RegExp(filters.tags, 'i');
+  //output = output.filter(trip => pattern.test(trip.tags));
+  //  }
+
 
   // TODO - sort by cost descending (most expensive goes first)
 
