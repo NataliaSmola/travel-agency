@@ -21,21 +21,18 @@ export const getFilteredTrips = ({trips, filters}) => {
        trip.days <= maxDuration));
   }
   // TODO - filter by tags
-  if(filters.tags.length > 0){
-    for(let tag in filters.tags){
-      output = output.filter(trip => trip.tags.indexOf(tag) >= -1);
-    }
+  if (filters.tags.length > 0) {
+    output = output.filter(trip => {
+      let result = false;
+
+      filters.tags.forEach(element => {
+        result = result || trip.tags.includes(element);
+      });
+
+      return result;
+    });
   }
-  //for(let tag of filters.tags) {
-  //output = output.filter(trip => trip.tags.indexOf(tag) >= -1);
-  //}
-  //  const pattern = new RegExp(filters.tags, 'i');
-  //output = output.filter(trip => pattern.test(trip.tags));
-  //  }
-
-
   // TODO - sort by cost descending (most expensive goes first)
-
   return output;
 };
 
