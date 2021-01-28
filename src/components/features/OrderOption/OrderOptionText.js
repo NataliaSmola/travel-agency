@@ -9,7 +9,6 @@ const OrderOptionText = ({id}) => (
       type='text'
       placeholder={(id==='name') ? 'Type your name' : 'Type your contact details'}
     />
-    {console.log({id})}
   </div>
 );
 OrderOptionText.propTypes ={
