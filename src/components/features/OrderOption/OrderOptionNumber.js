@@ -13,6 +13,7 @@ const OrderOptionNumber = ({price, currentValue, limits, setOptionValue}) => (
       max={limits.max}
       onChange={event => setOptionValue(event.currentTarget.value)}
     />
+    {console.log('limit max to:', limits.max)}
     {formatPrice(price)}
   </div>
 );

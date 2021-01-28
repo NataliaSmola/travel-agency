@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 
 const OrderOptionDate = () => {
@@ -10,11 +9,6 @@ const OrderOptionDate = () => {
   );
 };
 
-OrderOptionDate.propTypes ={
-  startDate: PropTypes.node,
-  setStartDate: PropTypes.node,
-  useState: PropTypes.node,
 
-};
 
 export default OrderOptionDate;
