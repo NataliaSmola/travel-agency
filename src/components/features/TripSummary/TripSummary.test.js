@@ -46,7 +46,6 @@ describe ('Component TripSummary', () => {
       tags= {['tag1', 'tag2', 'tag3']}
     />
     );
-    console.log(component.debug());
     expect (component.find('.title').text()).toEqual(expectedName);
     expect (component.find('.details span').first().text()).toEqual(`${expectedDays} days`);
     expect (component.find('.details span').last().text()).toEqual(`from ${expectedCost}`);
