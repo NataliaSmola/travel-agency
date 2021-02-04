@@ -8,9 +8,9 @@ describe ('Component TripSummary', () => {
     const expectedId = 'abc';
     const component = shallow (<TripSummary
       id= {expectedId}
-      image= ''
-      name= ''
-      cost = ''
+      image=''
+      name=''
+      cost =''
       days = {1}
       tags= {['tag1', 'tag2', 'tag3']}
     />
@@ -61,13 +61,14 @@ describe ('Component TripSummary', () => {
       cost = ''
       days = {1}
       id = ''
-      image = ''/>
+      image = ''
+    />
     );
     expect(component.find('.tags span').at(0).text()).toEqual(expectedTags[0]);
     expect(component.find('.tags span').at(1).text()).toEqual(expectedTags[1]);
     expect(component.find('.tags span').at(2).text()).toEqual(expectedTags[2]);
   });
-  it('should not render span if the tags is false', () => {
+  it('should not render tags if the tags prop is not provided', () => {
     const expectedTags = [];
     const component = shallow(<TripSummary
       tags={expectedTags}
@@ -75,11 +76,10 @@ describe ('Component TripSummary', () => {
       cost = ''
       days = {1}
       id = ''
-      image = ''/>
+      image = ''
+    />
     );
-    expect(component.find('.tags').text()).toBeFalsy();
-    expect(component.hasClass('tags')).toBe(false);
+    expect(component.find('.tags').html()).toBe('<div class="tags"></div>');
 
-    console.log(component.debug());
   });
 });
