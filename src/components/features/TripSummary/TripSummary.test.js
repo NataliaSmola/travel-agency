@@ -77,6 +77,9 @@ describe ('Component TripSummary', () => {
       id = ''
       image = ''/>
     );
+    expect(component.find('.tags').text()).toBeFalsy();
     expect(component.hasClass('tags')).toBe(false);
+
+    console.log(component.debug());
   });
 });
