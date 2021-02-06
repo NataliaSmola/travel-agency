@@ -9,8 +9,6 @@ import {formatPrice} from '../../../utils/formatPrice.js';
 import {calculateTotal} from '../../../utils/calculateTotal.js';
 import settings from '../../../data/settings.js';
 
-
-
 const sendOrder = (options, tripCost, tripDetails) => {
   if(options.name!='' && options.contact!=''){
     const totalCost = formatPrice(calculateTotal(tripCost, options));
@@ -20,7 +18,6 @@ const sendOrder = (options, tripCost, tripDetails) => {
       totalCost,
       tripDetails,
     };
-
 
     const url = settings.db.url + '/' + settings.db.endpoint.orders;
 
@@ -45,12 +42,9 @@ const sendOrder = (options, tripCost, tripDetails) => {
   }
 };
 
-
-
 const OrderForm = ({tripCost, options, setOrderOption, tripDetails}) => (
 
   <Row>
-
     {pricing.map(option => (
       <Col md={4} key={option.id}>
         <OrderOption {...option}
@@ -64,7 +58,6 @@ const OrderForm = ({tripCost, options, setOrderOption, tripDetails}) => (
     </Col>
     <Button onClick={() => sendOrder(options, tripCost, tripDetails)}>Order now!</Button>
   </Row>
-
 );
 
 OrderForm.propTypes = {
@@ -73,6 +66,5 @@ OrderForm.propTypes = {
   setOrderOption: PropTypes.func,
   tripDetails: PropTypes.node,
 };
-
 
 export default OrderForm;
