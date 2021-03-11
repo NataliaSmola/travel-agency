@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class DaysToSummer extends React.Component {
 
-  getCountdownDate(){
+  timeToSummer(){
     const currentDate = new Date();
     const summerDay = new Date(Date.UTC(currentDate.getUTCFullYear(), 5, 21));
 
@@ -17,26 +17,24 @@ class DaysToSummer extends React.Component {
     if (daysToSummer > 1) {
       return daysToSummer + ' days to summer!';
     }
-    else if (daysToSummer === 1 ) {
+    if (daysToSummer === 1 ) {
       return '1 day to summer!';
     }
-    else {
-      return '';
-    }
+    return '';
   }
 
   render(){
-    const countDaysDown = this.getCountdownDate();
+    const summerCountTitle = this.timeToSummer();
     return (
       <div className={styles.component}>
-        <h2 className={styles.title}>{countDaysDown}</h2>
+        <h2 className={styles.title}>{summerCountTitle}</h2>
       </div>
     );
   }
 }
 
 DaysToSummer.propTypes = {
-  countDaysDown: PropTypes.string,
+  summerCountTitle: PropTypes.node,
 };
 
 export default DaysToSummer;

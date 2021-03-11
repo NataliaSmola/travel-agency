@@ -5,6 +5,9 @@ import DaysToSummer from './DaysToSummer';
 const select = {
   title: '.title',
 };
+const mockProps = {
+  title: 'Days to Summer',
+};
 
 describe('Component DaysToSummer', () => {
   it('Should render without crashing', () =>{
@@ -12,9 +15,10 @@ describe('Component DaysToSummer', () => {
     expect (component).toBeTruthy();
   });
 
-  it('has correct compnent with title', () => {
-    const component = shallow(<DaysToSummer/>);
-    expect(component.exists(select .title)).toEqual(true);
+  it('should render correct title',() => {
+    const component = shallow(<DaysToSummer name = {mockProps.title} />);
+    const renderedTitle = component.find(select.title).text();
+    expect(renderedTitle).toEqual(mockProps.title);
   });
 });
 
@@ -46,10 +50,10 @@ const checkDescriptionAtDate = (date, expectedDescription) => {
 };
 
 describe('Component DaysToSummer with mocked Date', () => {
+  checkDescriptionAtDate('2020-05-12', '40 days to summer!');
+  checkDescriptionAtDate('2020-06-19', '2 days to summer!');
   checkDescriptionAtDate('2020-06-20', '1 day to summer!');
   checkDescriptionAtDate('2020-06-21', '');
-  checkDescriptionAtDate('2020-06-19', '2 days to summer!');
-  checkDescriptionAtDate('2020-05-12', '40 days to summer!');
   checkDescriptionAtDate('2020-07-20', '');
   checkDescriptionAtDate('2020-08-20', '');
 });
