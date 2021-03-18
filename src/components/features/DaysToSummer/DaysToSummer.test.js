@@ -5,20 +5,11 @@ import DaysToSummer from './DaysToSummer';
 const select = {
   title: '.title',
 };
-const mockProps = {
-  title: 'Days to Summer',
-};
 
 describe('Component DaysToSummer', () => {
   it('Should render without crashing', () =>{
     const component = shallow(<DaysToSummer/>);
     expect (component).toBeTruthy();
-  });
-
-  it('should render correct title',() => {
-    const component = shallow(<DaysToSummer name = {mockProps.title} />);
-    const renderedTitle = component.find(select.title).text();
-    expect(renderedTitle).toEqual(mockProps.title);
   });
 });
 
